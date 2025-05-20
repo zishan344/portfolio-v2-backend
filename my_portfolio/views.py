@@ -12,6 +12,12 @@ class ProjectViewSet(viewsets.ModelViewSet):
   serializer_class = ProjectSerializer
 
 class ProjectImageViewSet(viewsets.ModelViewSet):
-  # print(config("CLOUD_NAME"))
+  
   queryset = ProjectImage.objects.all()
   serializer_class = ProjectImageSerializer
+
+  def get_queryset(self):
+    return ProjectImage.objects.filter(project_id=self.kwargs.get('project_pk'))
+
+  def perform_create(self, serializer):
+    serializer.save(project_id=self.kwargs.get('project_pk'))

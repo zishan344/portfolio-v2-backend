@@ -19,11 +19,11 @@ class Project(models.Model):
   project_name = models.CharField(max_length=50)
   project_title = models.CharField(max_length=100)
   project_cover = CloudinaryField('image')
-  stack = ArrayField(models.CharField(max_length=50), size=15)
+  stack = ArrayField(models.CharField(max_length=50, blank=True), size=15,default=list, null=True,blank=True)
   github_client = models.CharField(max_length=250)
   github_server = models.CharField(max_length=250)
   github_preview =models.CharField(max_length=250)
-  created_at = models.DateTimeField(default=timezone.now)
+  created_at = models.DateTimeField(auto_now_add=True)
   
 class ProjectImage(models.Model):
   project = models.ForeignKey(Project,on_delete=models.CASCADE, related_name="images")
