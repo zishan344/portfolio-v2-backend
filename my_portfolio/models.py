@@ -18,6 +18,7 @@ class Skill(models.Model):
 class Project(models.Model):
   project_name = models.CharField(max_length=50)
   project_title = models.CharField(max_length=100)
+  display_project = models.BooleanField(default=False)
   project_cover = CloudinaryField('image')
   stack = ArrayField(models.CharField(max_length=50, blank=True), size=15,default=list, null=True,blank=True)
   github_client = models.CharField(max_length=250)
