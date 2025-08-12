@@ -11,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = []
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://my_portfolio_gpv9_user:7WN88OKsSZDNLupyChQ6dHzMd4XTOaTP@dpg-d0iqj5p5pdvs739p72f0-a.oregon-postgres.render.com/my_portfolio_gpv9',
+        default='postgresql://portfolio_tms7_user:XANtz95xIxqLNebuXhynJXSmRM6iiv21@dpg-d2dguaadbo4c73bg2rgg-a.oregon-postgres.render.com/portfolio_tms7',
         conn_max_age=600
     )
 }
-
+# postgresql://portfolio_tms7_user:XANtz95xIxqLNebuXhynJXSmRM6iiv21@dpg-d2dguaadbo4c73bg2rgg-a.oregon-postgres.render.com/portfolio_tms7
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

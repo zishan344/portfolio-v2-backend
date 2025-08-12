@@ -30,4 +30,4 @@ class ProjectImage(models.Model):
   project = models.ForeignKey(Project,on_delete=models.CASCADE, related_name="images")
   image = CloudinaryField('image')
   def __str__(self):
-      return f"Image of {self.project.project_name}"
+      return f"Image of {self.project}"
