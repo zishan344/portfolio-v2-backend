@@ -16,8 +16,8 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = []
+# In production, set this to your domain(s). For testing, '*' allows all hosts.
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://my_portfolio_gpv9_user:7WN88OKsSZDNLupyChQ6dHzMd4XTOaTP@dpg-d0iqj5p5pdvs739p72f0-a.oregon-postgres.render.com/my_portfolio_gpv9',
+        default='postgresql://portfolio_tms7_user:XANtz95xIxqLNebuXhynJXSmRM6iiv21@dpg-d2dguaadbo4c73bg2rgg-a.oregon-postgres.render.com/portfolio_tms7',
         conn_max_age=600
     )
 }

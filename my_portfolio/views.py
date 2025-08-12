@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import ProjectImage,Project
-from .serializers import ProjectImageSerializer,ProjectSerializer
+from .models import ProjectImage,Project,Blog
+from .serializers import ProjectImageSerializer,ProjectSerializer,BlogSerializer
 from decouple import config
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 # Create your views here.
@@ -35,3 +35,9 @@ class ProjectImageViewSet(viewsets.ModelViewSet):
 
   def perform_create(self, serializer):
     serializer.save(project_id=self.kwargs.get('project_pk'))
+
+
+class BlogViewSet(viewsets.ModelViewSet):
+  queryset = Blog.objects.all()
+  serializer_class = BlogSerializer
+  permission_classes = [IsAdminOrReadOnly]

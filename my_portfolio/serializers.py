@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import ProjectImage,Project
+from .models import ProjectImage,Project,Blog
 class ProjectImageSerializer(serializers.ModelSerializer):
-  image = serializers.ImageField()
-  class Meta:
-    model = ProjectImage
-    fields = ["id","image"]
+    image = serializers.ImageField()
+    class Meta:
+        model = ProjectImage
+        fields = "__all__"
 
 class ProjectSerializer(serializers.ModelSerializer):
     images = ProjectImageSerializer(many=True, read_only=True)
@@ -19,3 +19,9 @@ class ProjectSerializer(serializers.ModelSerializer):
         rep = super().to_representation(instance)
         rep['images'] = ProjectImageSerializer(instance.images.all(), many=True).data
         return rep
+
+class BlogSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField()
+    class Meta:
+        model = Blog
+        fields = "__all__"
