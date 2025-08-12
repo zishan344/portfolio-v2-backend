@@ -11,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # In production, set this to your domain(s). For testing, '*' allows all hosts.
 ALLOWED_HOSTS = ['*']
@@ -82,7 +82,7 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
+# postgresql://portfolio_tms7_user:XANtz95xIxqLNebuXhynJXSmRM6iiv21@dpg-d2dguaadbo4c73bg2rgg-a.oregon-postgres.render.com/portfolio_tms7
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
