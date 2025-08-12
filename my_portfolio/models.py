@@ -36,7 +36,6 @@ class ProjectImage(models.Model):
   project = models.ForeignKey(Project,on_delete=models.CASCADE, related_name="images")
   image = CloudinaryField('image')
   def __str__(self):
-<<<<<<< HEAD
       return f"Image of {self.project.project_name}"
 
 class Blog(models.Model):
@@ -50,6 +49,3 @@ class Blog(models.Model):
   def __str__(self):
       return f"{self.title}"
   
-=======
-      return f"Image of {self.project}"
->>>>>>> refs/remotes/origin/master
